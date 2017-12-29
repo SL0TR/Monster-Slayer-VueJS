@@ -11,19 +11,27 @@ button {
     border: none;
     width: 8em;
     border-radius: .5em;
-    border: 1px solid #27ae60;
     height: 3em;
     cursor: pointer;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
 }
 
 .mainPage {
-    height: 100vh;
     width: 100%;
 }
 
 h1 {
     text-align: center;
-    margin: 1em;
+    margin: 2em 1em;
     font-size: 2em;
 }
 
@@ -34,11 +42,12 @@ h1 {
 }
 
 .healthbarP {
-    border: 1px solid gray;
+    background: #eee;
     width: 95%;
     margin-left: 1em;
     border-radius: .5em;
     position: relative;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .healthbarP:first-child::before {
@@ -47,6 +56,7 @@ h1 {
     top: -2em;
     left: 40%;
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 .healthbarP:last-child::before {
@@ -55,6 +65,7 @@ h1 {
     top: -2em;
     left: 40%;
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 
@@ -63,12 +74,22 @@ h1 {
     width: 80%;
     height: 3em;
     border-radius: .4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #eee;
+    transition: all .5s;
+    font-size: 1.1em;
+}
+
+.monsterHealthBar {
+    background: #c0392b;
 }
 
 .newGame {
     margin: 1em;
     position: relative;
-    left: calc(50% - 8em);
+    left: calc(50% - 5em);
     width: 8em;
     border-radius: .5em;
     border: 1px solid #27ae60;
@@ -81,4 +102,34 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.gameLog {
+    width: 50%;
+    margin: 1em auto;
+    border-radius: .2em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.gameLog p {
+    text-align: center;
+    font-size: 1.3em;
+    text-decoration: underline;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+    margin: .5em;
+    font-family: sans-serif;
+    border-radius: .2em;
+    font-weight: bold;
+}
+
+.playerTurn {
+    color: #27ae60;
+}
+
+.monsterTurn {
+    color: #c0392b;
 }

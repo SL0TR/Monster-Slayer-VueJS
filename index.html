@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,400i,700" rel="stylesheet">
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" href="http://markwilhelm.ca/wp-content/uploads/media/Monster.png" type="image/gif" sizes="16x16">
 </head>
 <body>
 <div id="app">
@@ -12,20 +13,32 @@
             <h1>THE MONSTER SLAYER</h1>
             <div class="healthbarContainer">
                 <div class="healthbarP">
-                    <div class="healthbar"></div>
+                    <div class="healthbar" :style="{width: playerHealth + '%'}">
+                        {{ playerHealth }}
+                    </div>
                 </div>
                 <div class="healthbarP">
-                    <div class="healthbar"></div>
+                    <div class="healthbar monsterHealthBar" :style="{width: monsterHealth + '%'}">
+                        {{ monsterHealth }}
+                    </div>
                 </div>
             </div>
-            <button class="newGame">Start New Game</button>
-            <div class="btnContainer">
-                <button class="attck">Attack</button>
-                <button class="sAttack">Special Attack</button>
-                <button class="heal">Heal</button>
-                <button class="giveUp">Give Up</button>
+            <button class="newGame" v-if="!gameIsRunning" @click="startGame">Start New Game</button>
+            <div class="btnContainer" v-else>
+                <button class="attck" @click="attack">Attack</button>
+                <button class="sAttack" @click="sAttack">Special Attack</button>
+                <button class="heal" @click="heal">Heal</button>
+                <button class="giveUp" @click="giveUp">Give Up</button>
             </div>
-        
+            <div class="gameLog" v-if="turns.length > 0">
+                <p>Game Log</p>
+                <ul>
+                    <li v-for="turn in turns"
+                        :class="{'playerTurn': turn.isPlayer, 'monsterTurn': !turn.isPlayer}">
+                        {{ turn.text }}
+                    </li>
+                </ul>
+            </div>
     </section>
 </div>
 <script src="./app.js"></script>
